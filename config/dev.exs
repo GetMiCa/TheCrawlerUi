@@ -1,16 +1,16 @@
 use Mix.Config
 
 # Configure your database
-config :crawly_ui, CrawlyUI.Repo,
+config :the_crawler, TheCrawler.Repo,
   username: System.get_env("PG_USERNAME") || "postgres",
   password: System.get_env("PG_PASSWORD") || "postgres",
-  database: System.get_env("PG_DATABASE") || "crawly_ui_devv",
+  database: System.get_env("PG_DATABASE") || "the_crawler_devv",
   hostname: System.get_env("PG_HOST") || "localhost",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10,
   timeout: 60_000
 
-config :crawly_ui, CrawlyUIWeb.JobLive, update_interval: 10_000
+config :the_crawler, TheCrawlerWeb.JobLive, update_interval: 10_000
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -18,7 +18,7 @@ config :crawly_ui, CrawlyUIWeb.JobLive, update_interval: 10_000
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
-config :crawly_ui, CrawlyUIWeb.Endpoint,
+config :the_crawler, TheCrawlerWeb.Endpoint,
   http: [port: 4222],
   url: [host: "localhost"],
   debug_errors: true,
@@ -59,7 +59,7 @@ config :crawly_ui, CrawlyUIWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :crawly_ui, CrawlyUIWeb.Endpoint,
+config :the_crawler, TheCrawlerWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",

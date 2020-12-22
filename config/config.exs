@@ -7,17 +7,17 @@
 # General application configuration
 use Mix.Config
 
-config :crawly_ui,
-  ecto_repos: [CrawlyUI.Repo]
+config :the_crawler,
+  ecto_repos: [TheCrawler.Repo]
 
-config :crawly_ui, CrawlyUIWeb.JobLive, update_interval: 20_000
+config :the_crawler, TheCrawlerWeb.JobLive, update_interval: 20_000
 
 # Configures the endpoint
-config :crawly_ui, CrawlyUIWeb.Endpoint,
+config :the_crawler, TheCrawlerWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "NvJbkg8LD2bwbr4pT6v7UoaiqcaHIwIkCath+ECqQGN36U9CnCD5o3K8geVuKAmF",
-  render_errors: [view: CrawlyUIWeb.ErrorView, accepts: ~w(html json)],
-  pubsub_server: CrawlyUI.PubSub,
+  render_errors: [view: TheCrawlerWeb.ErrorView, accepts: ~w(html json)],
+  pubsub_server: TheCrawler.PubSub,
   live_view: [signing_salt: "mKlOeOvv3fK8OTEEYjXqPaFqBXoVvRcC"]
 
 config :logger,
@@ -25,22 +25,22 @@ config :logger,
 
 # configuration for the {LoggerFileBackend, :error_log} backend
 config :logger, :debug_log,
-  path: System.get_env("LOG_PATH", "/tmp/ui_debug.log"),
+  path: System.get_env("LOG_PATH", "./tmp/ui_debug.log"),
   level: :debug
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-config :crawly_ui, CrawlyUI.Scheduler,
+config :the_crawler, TheCrawler.Scheduler,
   jobs: [
     # Every 5 mins
-    {"*/5 * * * *", {CrawlyUI.Manager, :update_job_status, []}},
+    {"*/5 * * * *", {TheCrawler.Manager, :update_job_status, []}},
 
     # Every 5 mins
-    {"*/5 * * * *", {CrawlyUI.Manager, :update_running_jobs, []}},
+    {"*/5 * * * *", {TheCrawler.Manager, :update_running_jobs, []}},
 
     # Every 5 mins
-    {"*/5 * * * *", {CrawlyUI.Manager, :update_jobs_speed, []}}
+    {"*/5 * * * *", {TheCrawler.Manager, :update_jobs_speed, []}}
   ]
 
 # Import environment specific config. This must remain at the bottom

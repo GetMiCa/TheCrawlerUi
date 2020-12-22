@@ -1,4 +1,4 @@
-defmodule CrawlyUI.Repo.Migrations.CreateJobs do
+defmodule TheCrawler.Repo.Migrations.CreateJobs do
   use Ecto.Migration
 
   def change do

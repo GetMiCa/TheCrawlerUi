@@ -1,4 +1,4 @@
-defmodule CrawlyUI.Repo.Migrations.AddItemCountCrawlSpeed do
+defmodule TheCrawler.Repo.Migrations.AddItemCountCrawlSpeed do
   use Ecto.Migration
 
   def change do

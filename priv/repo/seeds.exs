@@ -5,7 +5,7 @@
 # Inside the script, you can read and write to any of your
 # repositories directly:
 #
-#     CrawlyUI.Repo.insert!(%CrawlyUI.SomeSchema{})
+#     TheCrawler.Repo.insert!(%TheCrawler.SomeSchema{})
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.

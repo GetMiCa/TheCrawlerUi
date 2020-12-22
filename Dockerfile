@@ -7,8 +7,8 @@ RUN apk update && apk upgrade \
 # Add local node module binaries to PATH
 ENV PATH=./node_modules/.bin:$PATH
 
-ADD . /crawlyui
-WORKDIR /crawlyui
+ADD . /the_crawler
+WORKDIR /the_crawler
 
 RUN mix local.rebar --force \
     && mix local.hex --force \
@@ -20,10 +20,10 @@ RUN mix local.rebar --force \
     && MIX_ENV=prod mix release ec
 
 FROM elixir:1.10.3-alpine
-COPY --from=0 /crawlyui/_build/prod/rel/ec/ /crawlyui
+COPY --from=0 /the_crawler/_build/prod/rel/ec/ /the_crawler
 
 RUN apk update && apk upgrade && apk add bash
-WORKDIR /crawlyui
+WORKDIR /the_crawler
 
 EXPOSE 4000
-CMD /crawlyui/ec/bin/ec start
+CMD /the_crawler/ec/bin/ec start

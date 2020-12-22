@@ -1,8 +1,8 @@
-defmodule CrawlyUI.ReleaseTasks do
+defmodule TheCrawler.ReleaseTasks do
   alias Ecto.Migrator
 
-  @otp_app :crawly_ui
-  @start_apps [:crawly_ui, :logger, :ssl, :postgrex, :ecto]
+  @otp_app :the_crawler
+  @start_apps [:the_crawler, :logger, :ssl, :postgrex, :ecto]
 
   def migrate do
     init(@otp_app, @start_apps)

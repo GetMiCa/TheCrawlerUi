@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(CrawlyUI.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(TheCrawler.Repo, :manual)

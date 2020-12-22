@@ -2,7 +2,7 @@ version: "3"
 services:
   ui:
     container_name: crawlyui.com
-    command: /crawlyui/bin/ec start
+    command: /the_crawler/bin/ec start
     build:
       context: .
       dockerfile: Dockerfile
@@ -34,8 +34,13 @@ services:
     container_name: worker.com
     command:  iex --cookie 123 --name worker@worker.com -S mix
     build:
-      context: "examples"
+      context: "crawlers"
       dockerfile: Dockerfile
     environment:
       UI_NODE: "ui@crawlyui.com"
 
+  scaper:
+    image: scrapinghub/splash
+    container_name: scraper
+    ports:
+      - 8050:8050

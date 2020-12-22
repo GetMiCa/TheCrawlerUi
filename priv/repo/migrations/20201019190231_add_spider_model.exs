@@ -1,4 +1,4 @@
-defmodule CrawlyUI.Repo.Migrations.AddSpiderModel do
+defmodule TheCrawler.Repo.Migrations.AddSpiderModel do
   use Ecto.Migration
 
   def change do

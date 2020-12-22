@@ -1,4 +1,4 @@
-defmodule CrawlyUI.DataCase do
+defmodule TheCrawler.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -10,7 +10,7 @@ defmodule CrawlyUI.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use CrawlyUI.DataCase, async: true`, although
+  by setting `use TheCrawler.DataCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -18,21 +18,21 @@ defmodule CrawlyUI.DataCase do
 
   using do
     quote do
-      alias CrawlyUI.Repo
+      alias TheCrawler.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import CrawlyUI.Manager
-      import CrawlyUI.DataCase
+      import TheCrawler.Manager
+      import TheCrawler.DataCase
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(CrawlyUI.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(TheCrawler.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(CrawlyUI.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(TheCrawler.Repo, {:shared, self()})
     end
 
     :ok
@@ -58,7 +58,7 @@ defmodule CrawlyUI.DataCase do
     params =
       Map.merge(%{spider: "Crawly", state: "running", tag: "test", node: "crawly@test"}, params)
 
-    CrawlyUI.Repo.insert!(struct(CrawlyUI.Manager.Job, params))
+    TheCrawler.Repo.insert!(struct(TheCrawler.Manager.Job, params))
   end
 
   def insert_item(job_id, inserted_at \\ nil, data \\ %{}) do
@@ -68,7 +68,7 @@ defmodule CrawlyUI.DataCase do
         _ -> inserted_at
       end
 
-    CrawlyUI.Repo.insert!(%CrawlyUI.Manager.Item{
+    TheCrawler.Repo.insert!(%TheCrawler.Manager.Item{
       job_id: job_id,
       inserted_at: inserted_at,
       data: data

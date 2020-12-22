@@ -1,11 +1,11 @@
-defmodule CrawlyUI.MixProject do
+defmodule TheCrawler.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :crawly_ui,
+      app: :the_crawler,
       version: "0.1.0",
-      elixir: "~> 1.9",
+      elixir: "~> 1.10",
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       test_coverage: [tool: ExCoveralls],
       start_permanent: Mix.env() == :prod,
@@ -30,7 +30,7 @@ defmodule CrawlyUI.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {CrawlyUI.Application, []},
+      mod: {TheCrawler.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

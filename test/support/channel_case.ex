@@ -1,4 +1,4 @@
-defmodule CrawlyUIWeb.ChannelCase do
+defmodule TheCrawlerWeb.ChannelCase do
   @moduledoc """
   This module defines the test case to be used by
   channel tests.
@@ -11,7 +11,7 @@ defmodule CrawlyUIWeb.ChannelCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use CrawlyUIWeb.ChannelCase, async: true`, although
+  by setting `use TheCrawlerWeb.ChannelCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -23,15 +23,15 @@ defmodule CrawlyUIWeb.ChannelCase do
       import Phoenix.ChannelTest
 
       # The default endpoint for testing
-      @endpoint CrawlyUIWeb.Endpoint
+      @endpoint TheCrawlerWeb.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(CrawlyUI.Repo)
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(TheCrawler.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(CrawlyUI.Repo, {:shared, self()})
+      Ecto.Adapters.SQL.Sandbox.mode(TheCrawler.Repo, {:shared, self()})
     end
 
     :ok
